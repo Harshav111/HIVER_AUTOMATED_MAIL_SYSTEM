@@ -1,0 +1,74 @@
+import json
+import os
+
+def create_dataset():
+    dataset = [
+        {
+            "id": 1,
+            "category": "password_reset",
+            "incoming_email": "Hi, I forgot my password and the reset link isn't working. It just says 'token expired'. Can you help?",
+            "reference_reply": "Hi there,\n\nI'm sorry to hear you're having trouble resetting your password. I've just sent a fresh password reset link to this email address. Please ensure you click it within 24 hours, as it will expire after that.\n\nLet me know if you still run into any issues!\n\nBest,\nSupport Team"
+        },
+        {
+            "id": 2,
+            "category": "billing",
+            "incoming_email": "I was just charged $49.99 but I cancelled my subscription last week! Please refund me immediately.",
+            "reference_reply": "Hello,\n\nI apologize for the confusion regarding the recent charge. I've checked your account and I see that your cancellation request was processed just after the billing cycle renewed.\n\nI have gone ahead and issued a full refund of $49.99 to your original payment method. You should see the funds in your account within 3-5 business days.\n\nThank you for trying our service, and please let us know if you need anything else.\n\nBest,\nSupport Team"
+        },
+        {
+            "id": 3,
+            "category": "feature_request",
+            "incoming_email": "Hey team, love the product. Any plans to add dark mode? My eyes are burning at night.",
+            "reference_reply": "Hi,\n\nThanks for reaching out and for the kind words about our product!\n\nWe completely understand the need for dark mode—in fact, it's one of our most requested features. Our engineering team is currently working on it, and we expect to roll it out in the next major update later this quarter.\n\nI've added your vote to the feature request tracker so you'll be notified as soon as it goes live.\n\nBest,\nSupport Team"
+        },
+        {
+            "id": 4,
+            "category": "bug_report",
+            "incoming_email": "When I try to export my report to PDF, the app just crashes. It happens every single time. I'm using Chrome on Windows.",
+            "reference_reply": "Hi there,\n\nI'm very sorry to hear you're experiencing crashes when trying to export to PDF. That's definitely not the experience we want you to have.\n\nCould you please let me know if this happens with all reports, or just one specific report? Also, clearing your browser cache sometimes resolves these export issues.\n\nI've opened a ticket with our engineering team to investigate this immediately. I'll keep you updated on our progress.\n\nBest,\nSupport Team"
+        },
+        {
+            "id": 5,
+            "category": "pricing_inquiry",
+            "incoming_email": "Do you offer any discounts for non-profits? We are a registered 501(c)(3) charity.",
+            "reference_reply": "Hello,\n\nYes, we absolutely do! We offer a 50% discount on all our plans for registered non-profit organizations.\n\nTo get this set up, please reply to this email with a copy of your 501(c)(3) determination letter or equivalent documentation. Once verified, we will apply the discount to your account right away.\n\nLooking forward to hearing from you.\n\nBest,\nSupport Team"
+        },
+        {
+            "id": 6,
+            "category": "angry_customer",
+            "incoming_email": "Your service went down right in the middle of our biggest launch of the year. This is completely unacceptable! What are you doing to fix this?",
+            "reference_reply": "Hello,\n\nI am incredibly sorry for the disruption you experienced during your launch. I completely understand your frustration; reliability is paramount, and we failed to deliver it when you needed it most.\n\nThe outage was caused by an unexpected database spike. Our engineers have resolved the issue and implemented additional safeguards to ensure this does not happen again.\n\nWe'd like to offer you a credit for your next month of service as an apology for the inconvenience. Please let us know if you'd like us to apply this to your account.\n\nSincerely,\nSupport Team"
+        },
+        {
+            "id": 7,
+            "category": "how_to",
+            "incoming_email": "How do I add a new team member to my workspace?",
+            "reference_reply": "Hi,\n\nThanks for reaching out! Adding a team member is easy.\n\n1. Go to your 'Workspace Settings'.\n2. Click on the 'Team' tab.\n3. Click the 'Invite Member' button in the top right corner.\n4. Enter their email address and select their role.\n\nThey will receive an email invitation to join your workspace. Let me know if you need help with anything else!\n\nBest,\nSupport Team"
+        },
+        {
+            "id": 8,
+            "category": "account_deletion",
+            "incoming_email": "I'm no longer using this service. Please delete my account and all my data.",
+            "reference_reply": "Hello,\n\nI'm sorry to see you go! I can certainly help you with that.\n\nFor security reasons, we require you to initiate the account deletion process from within your account. Please log in, go to 'Account Settings' -> 'Privacy', and click 'Delete Account'.\n\nThis will permanently delete all your data, which cannot be undone. If you need any assistance with this, please let me know.\n\nBest,\nSupport Team"
+        },
+        {
+            "id": 9,
+            "category": "integration",
+            "incoming_email": "Does your tool integrate with Slack? We want to get notifications there.",
+            "reference_reply": "Hi there,\n\nYes, we do have a Slack integration!\n\nTo set it up, head over to the 'Integrations' section in your account dashboard and click on 'Connect Slack'. You'll be prompted to authorize the connection and choose which channel should receive the notifications.\n\nYou can read more about configuring the integration in our help center here: [Link]\n\nLet me know if you have any questions during setup.\n\nBest,\nSupport Team"
+        },
+        {
+            "id": 10,
+            "category": "sales",
+            "incoming_email": "I'm interested in the Enterprise plan for my company of 500 people. Can we schedule a demo?",
+            "reference_reply": "Hello,\n\nThank you for your interest in our Enterprise plan! We would love to show you how our platform can scale to support your entire 500-person team.\n\nPlease use this link to book a time that works best for you: [Calendar Link]\n\nOur account executive will walk you through the advanced security features, custom reporting, and dedicated support included in the Enterprise tier.\n\nLooking forward to speaking with you soon.\n\nBest,\nSales Team"
+        }
+    ]
+
+    with open("dataset.json", "w") as f:
+        json.dump(dataset, f, indent=4)
+        
+    print(f"Dataset with {len(dataset)} examples created at dataset.json")
+
+if __name__ == "__main__":
+    create_dataset()
