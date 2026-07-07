@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Email System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-inbox logo-icon"></i>
+                <h2>Inbox</h2>
+            </div>
+            <div class="email-list" id="email-list">
+                <!-- Emails will be populated here -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="top-bar">
+                <h2 id="current-category">Select an email to view</h2>
+            </div>
+            
+            <div class="content-scroll">
+                <!-- Incoming Email Section -->
+                <div class="email-section incoming" id="incoming-section" style="display: none;">
+                    <div class="section-header">
+                        <i class="fas fa-user-circle avatar"></i>
+                        <div>
+                            <h4>Customer</h4>
+                            <span class="timestamp">Just now</span>
+                        </div>
+                    </div>
+                    <div class="email-body" id="incoming-email-body"></div>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="action-bar" id="action-bar" style="display: none;">
+                    <button class="btn btn-primary" id="btn-generate">
+                        <i class="fas fa-magic"></i> Generate AI Reply
+                    </button>
+                    <div class="loader" id="generate-loader" style="display: none;"></div>
+                </div>
+
+                <!-- Generated Reply Section -->
+                <div class="email-section reply" id="reply-section" style="display: none;">
+                    <div class="section-header">
+                        <i class="fas fa-robot avatar ai-avatar"></i>
+                        <div>
+                            <h4>AI Assistant</h4>
+                            <span class="badge">Draft</span>
+                        </div>
+                    </div>
+                    <textarea class="email-body-input" id="generated-reply-body" rows="6"></textarea>
+                    
+                    <div class="reply-actions">
+                        <button class="btn btn-secondary" id="btn-evaluate">
+                            <i class="fas fa-chart-bar"></i> Evaluate Reply
+                        </button>
+                        <div class="loader" id="evaluate-loader" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <!-- Evaluation Scorecard -->
+                <div class="scorecard" id="scorecard" style="display: none;">
+                    <h3><i class="fas fa-clipboard-check"></i> Evaluation Results</h3>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-title">Relevance</div>
+                            <div class="metric-value" id="score-relevance">-</div>
+                            <div class="metric-bar"><div class="fill" id="bar-relevance"></div></div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-title">Tone</div>
+                            <div class="metric-value" id="score-tone">-</div>
+                            <div class="metric-bar"><div class="fill" id="bar-tone"></div></div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-title">Accuracy</div>
+                            <div class="metric-value" id="score-accuracy">-</div>
+                            <div class="metric-bar"><div class="fill" id="bar-accuracy"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="reasoning">
+                        <h4>Reasoning:</h4>
+                        <p id="eval-reasoning"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
